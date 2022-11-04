@@ -18,10 +18,10 @@ const CommonLayout = () => {
           style={{ minHeight: "100vh" }}
         >
           <Sidebar />
-          <Layout className="site-layout overflow-y-scroll min-h-screen mt-4 h-screen">
+          <Layout className="site-layout overflow-y-scroll min-h-screen bg-slate-200 m-4 h-screen">
             <Content>
               <Outlet />
-              <Footer />
+              {/* <Footer /> */}
             </Content>
           </Layout>
         </Layout>

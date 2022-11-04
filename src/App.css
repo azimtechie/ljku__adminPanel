@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer components{
-  .fixed__sidebar{
-    @apply 
+@layer components {
+  .ant-card {
   }
-} */
+}
 /* .Sidebar__customize .ant-layout-sider {
   position: fixed !important;
   text-align: center !important;
