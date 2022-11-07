@@ -19,7 +19,6 @@ const AnnouncementsSection = () => {
       >
         <div>
           <p>
-            <div></div>
             Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
             lorem
           </p>

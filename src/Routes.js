@@ -1,9 +1,16 @@
 import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
 
-const routes = [
+export const routes = [
   {
-    path: "/",
+    path: "/home",
     component: Home,
   },
 ];
-export default routes;
+
+export const defaultroutes = [
+  {
+    path: "/",
+    component: Login,
+  },
+];

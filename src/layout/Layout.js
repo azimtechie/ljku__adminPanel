@@ -4,6 +4,7 @@ import Footer from "../Common/Footer/Footer";
 import Header from "../Common/Header/Header";
 import { Breadcrumb, Layout, Menu } from "antd";
 import Sidebar from "../Common/Sidebar/Sidebar";
+import Login from "../pages/Login/Login";
 
 const CommonLayout = () => {
   const { Content } = Layout;

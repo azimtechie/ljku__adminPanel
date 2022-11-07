@@ -110,7 +110,7 @@ const FeesInfoSection = () => {
           //     </Button>,
           //   ]}
           footer={
-            <div defaultActiveKey="1">
+            <div>
               {/* <TabPane tab="Details" key="1" />
                 <TabPane tab="Rule" key="2" /> */}
               <hr />
