@@ -1,12 +1,15 @@
 import React from "react";
-import { Card, Avatar } from "antd";
+import { Card, PageHeader } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import { AiFillCalendar } from "react-icons/ai";
 import {
   FaUniversity,
   FaBook,
   FaUserGraduate,
   FaCalendarAlt,
   FaPhoneAlt,
+  FaUser,
+  FaIdCard,
 } from "react-icons/fa";
 import { MdEmail, MdArrowForward } from "react-icons/md";
 
@@ -14,21 +17,19 @@ const PersonalInfoSection = () => {
   return (
     <>
       <Card
-        title="Hi PATHAN, Good Afternoon ! 🌤️"
-        extra={
-          <>
-            {/* <img src="" alt="logo" /> */}
-            <Avatar
-              className="flex items-center  justify-center"
-              icon={<UserOutlined />}
-            />
-          </>
+        title={
+          <span className="text-lg font-semibold">
+            Hi PATHAN, Good Afternoon ! 🌤️
+          </span>
         }
-        bordered
         size="small"
-        className="rounded-xl border-2 w-[500px]"
+        className="custom__card personalInfoCard border-2 "
       >
-        <p className="flex items-center m-0 p-0 ">
+        <PageHeader
+          className="custom__fees__header  site-page-header-responsive"
+          subTitle="Personal Details"
+        ></PageHeader>
+        <p className="flex items-center mt-3 m-0 p-0 ">
           <FaUniversity className="mb-4 mr-3 text-xl" />
           <p className="text-md">
             L.J. Institute of Engineering and Technology (LJIET)
@@ -39,6 +40,18 @@ const PersonalInfoSection = () => {
           <p className="text-md">
             Bachelor of Technology in Information & Technology
           </p>
+        </p>
+        <p className="flex items-center m-0 p-0">
+          <FaIdCard className="mb-4 mr-3 text-xl" />
+          <p className="text-md">220320123456</p>
+        </p>
+        <p className="flex items-center m-0 p-0">
+          <AiFillCalendar className="mb-4 mr-3 text-xl" />
+          <p className="text-md">Semester - 4</p>
+        </p>
+        <p className="flex items-center m-0 p-0">
+          <FaUser className="mb-4 mr-3 text-xl" />
+          <p className="text-md">PATHAN AZIMKHAN FAIZULLAHKHAN</p>
         </p>
         <p className="flex items-center m-0 p-0">
           <FaUserGraduate className="mb-4 mr-3 text-xl" />
@@ -58,6 +71,7 @@ const PersonalInfoSection = () => {
           <FaPhoneAlt className="mb-4 mr-3 text-xl" />
           <p className="text-md">7802910671</p>
         </p>
+
         <hr />
         <div className="flex items-center mt-2 justify-end">
           <span className=" mr-2 font-bold hover:underline">View More</span>
