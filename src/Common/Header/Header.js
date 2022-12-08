@@ -5,11 +5,18 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
-import { Input, Tooltip } from "antd";
+import { Input, Tooltip, message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const { Search } = Input;
 const Header = () => {
+  const navigate = useNavigate();
+  const onLogout = () => {
+    message.success("Logout Successful");
+    navigate("/");
+  };
   const onSearch = (value) => console.log(value);
+
   return (
     <>
       <div className="grid grid-cols-12  sticky items-center top-0 p-2 z-10 bg-white w-full justify-between">
@@ -19,7 +26,6 @@ const Header = () => {
             src="./Images/header-logo.png"
             alt="header-logo"
           />
-          {/* <h1>Metaweb Univercity</h1> */}
         </div>
         <div className="col-span-3 mr-8">
           <Search
@@ -29,34 +35,20 @@ const Header = () => {
             allowClear
             className="header__search"
           />
-          {/* <div className="search-container">
-            <form action="/search" method="get">
-              <input
-                className="search expandright"
-                id="searchright"
-                type="search"
-                name="q"
-                placeholder="Search"
-              />
-              <label className="button searchbutton" htmlFor="searchright">
-                <AiOutlineSearch />
-              </label>
-            </form>
-          </div> */}
         </div>
         <div className="col-span-2">
           <div className="flex ml-4">
             <Tooltip title="Message">
-              <AiOutlineMail className="mx-3 text-2xl leading-0" />
+              <AiOutlineMail className="mx-3 text-2xl cursor-pointer leading-0" />
             </Tooltip>
             <Tooltip title="Notification">
-              <AiOutlineNotification className="mx-3 text-2xl leading-0" />
+              <AiOutlineNotification className="mx-3 cursor-pointer text-2xl leading-0" />
             </Tooltip>
             <Tooltip title="Profile">
-              <CgProfile className="mx-3 text-2xl leading-0" />
+              <CgProfile className="mx-3 cursor-pointer text-2xl leading-0" />
             </Tooltip>
-            <Tooltip title="Logout">
-              <AiOutlineLogout className="mx-3 text-2xl leading-0" />
+            <Tooltip onClick={onLogout} title="Logout">
+              <AiOutlineLogout className="mx-3 cursor-pointer text-2xl leading-0" />
             </Tooltip>
           </div>
         </div>
