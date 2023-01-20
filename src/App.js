@@ -6,9 +6,6 @@ import { routes, defaultroutes } from "./Routes";
 import DefaultLayout from "./layout/DefaultLayout";
 
 const App = () => {
-  const routeComponents = routes.map(({ path, component }, key) => (
-    <Route exact path={path} component={component} key={key} />
-  ));
   return (
     <>
       <BrowserRouter>

@@ -21,23 +21,33 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authorized, setAuthorized] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    password: "",
+  });
   if (password === "123" && email === "hitesh") {
     setAuthorized(true);
   }
-  const onFinish = (values) => {
-    console.log("Success:", values);
-    message.success("Login Success");
 
-    navigate("/home");
-  };
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
     message.error("Enter Correct Id or Password");
   };
   const handleCapatch = () => {
     setCaptcha(true);
-    console.log("CAPPPPPPP");
   };
+  let name, value;
+  const handleSubmit = () => {
+    console.log(arry);
+    message.success("Login Success");
+    navigate("/home");
+  };
+  const handleInput = (e) => {
+    name = e.target.name;
+    value = e.target.value;
+  };
+  const arry = [];
+  arry.push(user);
+  console.log(arry);
   return (
     <>
       <Row className=" h-screen">
@@ -61,8 +71,8 @@ const Login = () => {
             initialValues={{
               remember: true,
             }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
+            // onFinish={onFinish}
+            // onFinishFailed={onFinishFailed}
             autoComplete="on"
           >
             <Form.Item
@@ -81,6 +91,10 @@ const Login = () => {
                   placeholder="Username / Enrollment No."
                   suffix={<AiOutlineUser />}
                   bordered={false}
+                  value={user.enrollmentNum}
+                  onChange={handleInput}
+                  name="enrollmentnum"
+                  required
                 />
               </div>
             </Form.Item>
@@ -99,8 +113,11 @@ const Login = () => {
               <div className="border-b-[1px] border-b-gray-400">
                 <Input.Password
                   placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
                   bordered={false}
+                  value={user.userPassword}
+                  onChange={handleInput}
+                  required
+                  name="password"
                 />
               </div>
             </Form.Item>
@@ -114,7 +131,7 @@ const Login = () => {
                 Forgot password ?
               </a>
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               rules={[
                 {
                   required: true,
@@ -128,7 +145,7 @@ const Login = () => {
                 sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
                 onChange={handleCapatch}
               />
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item
               wrapperCol={{
                 offset: 0,
@@ -136,10 +153,11 @@ const Login = () => {
               }}
             >
               <Button
-                disabled={!captcha == true}
+                // disabled={!captcha == true}
                 className="min-w-full"
                 type="primary"
-                htmlType="submit"
+                htmlType="button"
+                onClick={handleSubmit}
               >
                 Submit
               </Button>
