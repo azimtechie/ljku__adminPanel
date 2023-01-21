@@ -45,6 +45,7 @@ const Login = () => {
     name = e.target.name;
     value = e.target.value;
   };
+  console.log("Test");
   const arry = [];
   arry.push(user);
   console.log(arry);
