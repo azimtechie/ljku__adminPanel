@@ -15,13 +15,19 @@ import { HiCurrencyRupee } from "react-icons/hi";
 import { BiRupee } from "react-icons/bi";
 
 const { TabPane } = Tabs;
-const renderContent = (column = 2) => (
+const renderContent = (column = 2, user) => (
   <Descriptions size="small" column={column}>
-    <Descriptions.Item label="Branch">IT</Descriptions.Item>
-    <Descriptions.Item label="Semester">4 </Descriptions.Item>
-    <Descriptions.Item label="Division">F2-D2D</Descriptions.Item>
+    <Descriptions.Item label="Branch">
+      {user?.user?.branchsrt}
+    </Descriptions.Item>
+    <Descriptions.Item label="Semester">
+      {user?.user?.semester}
+    </Descriptions.Item>
+    <Descriptions.Item label="Division">
+      {user?.user?.division}
+    </Descriptions.Item>
     <Descriptions.Item label="Due Date">
-      <span className="font-bold text-red-700">20-03-2023</span>
+      <span className="font-bold text-red-700">{user?.user?.dueDate}</span>
     </Descriptions.Item>
     <Descriptions.Item label="Note">
       <span className="font-bold text-blue-700">
@@ -30,7 +36,7 @@ const renderContent = (column = 2) => (
     </Descriptions.Item>
   </Descriptions>
 );
-const extraContent = (
+const extraContent = (user) => (
   <>
     <hr className="mb-[11px]" />
     <div className="grid grid-cols-12 ">
@@ -45,13 +51,13 @@ const extraContent = (
           <span>
             <BiRupee />
           </span>
-          16,500
+          {user?.user?.Tfees}
         </p>
         <p className="flex items-center ">
           <span>
             <BiRupee />
           </span>
-          15,150
+          {user?.user?.Ofees}
         </p>
       </div>
     </div>
@@ -59,7 +65,7 @@ const extraContent = (
     <div>
       <div className="mt-4 font-bold text-lg grid grid-cols-12">
         <div className="col-span-6 ">Total Fees</div>
-        <div className="col-span-6">31,560</div>
+        <div className="col-span-6">₹ {user?.user?.TOfees}</div>
       </div>
       <Button className="mt-4" type="primary">
         Pay Now
@@ -67,13 +73,13 @@ const extraContent = (
     </div>
   </>
 );
-const Content = ({ children, extra }) => (
+const Content = ({ children, extra, user }) => (
   <div className="content">
     <div className="main">{children}</div>
-    <div className="extra">{extra}</div>
+    <div className="extra">{extra(user)}</div>
   </div>
 );
-const FeesInfoSection = () => {
+const FeesInfoSection = (user) => {
   return (
     <>
       <Card
@@ -101,7 +107,7 @@ const FeesInfoSection = () => {
         <PageHeader
           className="custom__fees__header site-page-header-responsive"
           onBack={() => window.history.back()}
-          subTitle="Semester-4 university fees"
+          subTitle={`Semester-${user?.user?.semester} university fees`}
           //   extra={[
           //     <Button key="3">Operation</Button>,
           //     <Button key="2">Operation</Button>,
@@ -123,7 +129,9 @@ const FeesInfoSection = () => {
             </div>
           }
         >
-          <Content extra={extraContent}>{renderContent()}</Content>
+          <Content user={user} extra={extraContent}>
+            {renderContent(2, user)}
+          </Content>
         </PageHeader>
       </Card>
     </>

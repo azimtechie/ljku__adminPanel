@@ -11,7 +11,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<CommonLayout />}>
-            {routes.map((item, key) => (
+            {routes.m̥ap((item, key) => (
               <Route
                 exact
                 path={item.path}

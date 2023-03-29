@@ -13,13 +13,14 @@ import {
 } from "react-icons/fa";
 import { MdEmail, MdArrowForward } from "react-icons/md";
 
-const PersonalInfoSection = () => {
+const PersonalInfoSection = (user) => {
+  console.log(user);
   return (
     <>
       <Card
         title={
           <span className="text-lg font-semibold">
-            Hi PATHAN, Good Afternoon ! 🌤️
+            Hi {user?.user?.lastname}, Good Afternoon ! 🌤️
           </span>
         }
         size="small"
@@ -31,45 +32,47 @@ const PersonalInfoSection = () => {
         ></PageHeader>
         <p className="flex items-center mt-3 m-0 p-0 ">
           <FaUniversity className="mb-4 mr-3 text-xl" />
-          <p className="text-md">
-            L.J. Institute of Engineering and Technology (LJIET)
-          </p>
+          <p className="text-md">{user?.user?.institute}</p>
         </p>
         <p className="flex items-center m-0 p-0 ">
           <FaBook className="mb-4 mr-3 text-xl" />
           <p className="text-md">
-            Bachelor of Technology in Information & Technology
+            Bachelor of Technology in {user?.user?.branch}
           </p>
         </p>
         <p className="flex items-center m-0 p-0">
           <FaIdCard className="mb-4 mr-3 text-xl" />
-          <p className="text-md">220320123456</p>
+          <p className="text-md">{user?.user?.enrollmentno}</p>
         </p>
         <p className="flex items-center m-0 p-0">
           <AiFillCalendar className="mb-4 mr-3 text-xl" />
-          <p className="text-md">Semester - 4</p>
+          <p className="text-md">Semester - {user?.user?.semester}</p>
         </p>
         <p className="flex items-center m-0 p-0">
           <FaUser className="mb-4 mr-3 text-xl" />
-          <p className="text-md">PATHAN AZIMKHAN FAIZULLAHKHAN</p>
-        </p>
-        <p className="flex items-center m-0 p-0">
-          <FaUserGraduate className="mb-4 mr-3 text-xl" />
-          <p className="text-md">Male</p>
-        </p>
-        <p className="flex items-center m-0 p-0">
-          <FaCalendarAlt className="mb-4 mr-3 text-xl" />
-          <p className="text-md">
-            15<sup>th</sup> Dec 2002
+          <p className="text-md uppercase">
+            {user?.user?.lastname +
+              " " +
+              user?.user?.firstname +
+              " " +
+              user?.user?.middlename}
           </p>
         </p>
         <p className="flex items-center m-0 p-0">
+          <FaUserGraduate className="mb-4 mr-3 text-xl" />
+          <p className="text-md">{user?.user?.gender}</p>
+        </p>
+        <p className="flex items-center m-0 p-0">
+          <FaCalendarAlt className="mb-4 mr-3 text-xl" />
+          <p className="text-md">{user?.user?.DOB}</p>
+        </p>
+        <p className="flex items-center m-0 p-0">
           <MdEmail className="mb-4 mr-3 text-xl" />
-          <p className="text-md">abdulazim1512@outlook.com</p>
+          <p className="text-md">{user?.user?.email}</p>
         </p>
         <p className="flex items-center m-0 p-0">
           <FaPhoneAlt className="mb-4 mr-3 text-xl" />
-          <p className="text-md">7802910671</p>
+          <p className="text-md">{user?.user?.phone}</p>
         </p>
 
         <hr />

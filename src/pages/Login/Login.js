@@ -14,41 +14,53 @@ import { AiOutlineUser } from "react-icons/ai";
 import "./Login.css";
 import LoginCarousel from "./LoginCarousel";
 import ReCAPTCHA from "react-google-recaptcha";
+import userData from "../../Common/userData.json";
 
 const Login = () => {
   let navigate = useNavigate();
   const [captcha, setCaptcha] = useState(false);
-  const [email, setEmail] = useState("");
+  const [enrollmentnum, setEnrollmentnum] = useState("");
   const [password, setPassword] = useState("");
-  const [authorized, setAuthorized] = useState(false);
-  const [user, setUser] = useState({
-    name: "",
-    password: "",
-  });
-  if (password === "123" && email === "hitesh") {
-    setAuthorized(true);
-  }
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const onFinishFailed = (errorInfo) => {
-    message.error("Enter Correct Id or Password");
-  };
   const handleCapatch = () => {
     setCaptcha(true);
   };
   let name, value;
-  const handleSubmit = () => {
-    console.log(arry);
-    message.success("Login Success");
-    navigate("/home");
-  };
   const handleInput = (e) => {
     name = e.target.name;
     value = e.target.value;
+    return { name, value };
   };
-  console.log("Test");
-  const arry = [];
-  arry.push(user);
-  console.log(arry);
+  // const handleLogin = (event) => {
+  //   event.preventDefault();
+  //   const user = userData.find(
+  //     (user) => user.enrollmentno == enrollmentnum && user.password == password
+  //   );
+  //   if (user) {
+  //     message.success("Login Successful");
+  //     navigate("/home", { state: { user } });
+  //   } else {
+  //     setErrorMessage("Invalid credentials");
+  //     message.error("Invalid credentials");
+  //   }
+  // };
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const user = userData.find(
+      (user) =>
+        user.enrollmentno === enrollmentnum && user.password === password
+    );
+    console.log(userData);
+    if (user) {
+      message.success("Login Successful");
+      navigate("/home");
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      setErrorMessage("Invalid credentials");
+      message.error("Invalid credentials");
+    }
+  };
   return (
     <>
       <Row className=" h-screen">
@@ -72,14 +84,14 @@ const Login = () => {
             initialValues={{
               remember: true,
             }}
-            // onFinish={onFinish}
-            // onFinishFailed={onFinishFailed}
             autoComplete="on"
           >
+            {(errorMessage && <p>{errorMessage}</p>) || (
+              <p className="opacity-0">:</p>
+            )}
             <Form.Item
-              // label="Enrollment Number"
               className="text-left"
-              name="username"
+              name="enrollmentnum"
               rules={[
                 {
                   required: true,
@@ -92,8 +104,8 @@ const Login = () => {
                   placeholder="Username / Enrollment No."
                   suffix={<AiOutlineUser />}
                   bordered={false}
-                  value={user.enrollmentNum}
-                  onChange={handleInput}
+                  value={enrollmentnum}
+                  onChange={(e) => setEnrollmentnum(e.target.value)}
                   name="enrollmentnum"
                   required
                 />
@@ -115,8 +127,8 @@ const Login = () => {
                 <Input.Password
                   placeholder="Password"
                   bordered={false}
-                  value={user.userPassword}
-                  onChange={handleInput}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                   name="password"
                 />
@@ -157,8 +169,8 @@ const Login = () => {
                 // disabled={!captcha == true}
                 className="min-w-full"
                 type="primary"
-                htmlType="button"
-                onClick={handleSubmit}
+                htmlType="submit"
+                onClick={handleLogin}
               >
                 Submit
               </Button>

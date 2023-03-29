@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "antd";
 import { HiSpeakerphone } from "react-icons/hi";
 
-const AnnouncementsSection = () => {
+const AnnouncementsSection = (user) => {
   return (
     <>
       <Card
@@ -18,14 +18,8 @@ const AnnouncementsSection = () => {
         className="custom__card personalInfoCard border-2"
       >
         <div>
-          <p>
-            Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
-            lorem
-          </p>
-          <p>
-            Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem
-            lorem
-          </p>
+          <p>Hello {user?.user?.lastname} !</p>
+          <p>There is new announcements for you!</p>
         </div>
       </Card>
     </>

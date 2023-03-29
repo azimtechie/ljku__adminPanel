@@ -1,11 +1,10 @@
 import React, { useState } from "react";
+import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
 import {
-  DesktopOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { AiOutlineHome } from "react-icons/ai";
+  AiOutlineHome,
+  AiOutlineLogout,
+  AiTwotoneCalendar,
+} from "react-icons/ai";
 import { Layout, Menu } from "antd";
 
 const { Header, Content, Sider } = Layout;
@@ -18,18 +17,18 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem("Home", "/", <AiOutlineHome />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
+  getItem("Dashbord", "/home", <AiOutlineHome />),
+  getItem("My Results", "2", <DesktopOutlined />),
+  getItem("Profile", "sub1", <UserOutlined />, [
+    getItem("Update Profile", "3"),
+    getItem("Security", "4"),
+    getItem("Settings", "5"),
   ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
+  getItem("Calander", "sub2", <AiTwotoneCalendar />, [
+    getItem("Exam", "6"),
+    getItem("Events", "8"),
   ]),
-  getItem("Files", "9", <FileOutlined />),
+  getItem("Logout", "/", <AiOutlineLogout />),
 ];
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);

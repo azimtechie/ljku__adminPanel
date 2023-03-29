@@ -13,6 +13,7 @@ const Header = () => {
   const navigate = useNavigate();
   const onLogout = () => {
     message.success("Logout Successful");
+    localStorage.clear();
     navigate("/");
   };
   const onSearch = (value) => console.log(value);
