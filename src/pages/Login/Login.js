@@ -1,50 +1,17 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  message,
-  Row,
-  Typography,
-} from "antd";
+import { Button, Checkbox, Col, Form, Input, message, Row } from "antd";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineUser } from "react-icons/ai";
 import "./Login.css";
 import LoginCarousel from "./LoginCarousel";
-import ReCAPTCHA from "react-google-recaptcha";
 import userData from "../../Common/userData.json";
 
 const Login = () => {
   let navigate = useNavigate();
-  const [captcha, setCaptcha] = useState(false);
   const [enrollmentnum, setEnrollmentnum] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleCapatch = () => {
-    setCaptcha(true);
-  };
-  let name, value;
-  const handleInput = (e) => {
-    name = e.target.name;
-    value = e.target.value;
-    return { name, value };
-  };
-  // const handleLogin = (event) => {
-  //   event.preventDefault();
-  //   const user = userData.find(
-  //     (user) => user.enrollmentno == enrollmentnum && user.password == password
-  //   );
-  //   if (user) {
-  //     message.success("Login Successful");
-  //     navigate("/home", { state: { user } });
-  //   } else {
-  //     setErrorMessage("Invalid credentials");
-  //     message.error("Invalid credentials");
-  //   }
-  // };
   const handleLogin = (event) => {
     event.preventDefault();
     const user = userData.find(
@@ -113,7 +80,6 @@ const Login = () => {
             </Form.Item>
 
             <Form.Item
-              // label="Password"
               className="text-left"
               name="password"
               rules={[
@@ -140,25 +106,10 @@ const Login = () => {
                 <Checkbox>Remember me</Checkbox>
               </Form.Item>
 
-              <a className="ml-3" href="">
+              <a className="ml-3" href="#">
                 Forgot password ?
               </a>
             </Form.Item>
-            {/* <Form.Item
-              rules={[
-                {
-                  required: true,
-                  message: "Please Select Captcha!",
-                },
-              ]}
-              required
-            >
-              <ReCAPTCHA
-                data-theme="dark"
-                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                onChange={handleCapatch}
-              />
-            </Form.Item> */}
             <Form.Item
               wrapperCol={{
                 offset: 0,
@@ -166,7 +117,6 @@ const Login = () => {
               }}
             >
               <Button
-                // disabled={!captcha == true}
                 className="min-w-full"
                 type="primary"
                 htmlType="submit"

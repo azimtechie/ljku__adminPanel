@@ -13,21 +13,17 @@ const LoginCarousel = () => {
           <img
             src="./Images/Independencedayimg-2.jpeg"
             style={contentStyle}
-            alt="Independent Day Image"
+            alt="Independent Day"
           />
         </div>
         <div>
-          <img
-            src="./Images/LJIVimg -1.jpg"
-            style={contentStyle}
-            alt="LJIV image"
-          />
+          <img src="./Images/LJIVimg -1.jpg" style={contentStyle} alt="LJIV " />
         </div>
         <div>
           <img
             src="./Images/pitchingseasonimg - 1.jpg"
             style={contentStyle}
-            alt="pitchingSeasion image"
+            alt="pitchingSeasion "
           />
         </div>
         <div>

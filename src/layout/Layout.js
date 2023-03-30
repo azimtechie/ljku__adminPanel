@@ -2,9 +2,8 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../Common/Footer/Footer";
 import Header from "../Common/Header/Header";
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Layout } from "antd";
 import Sidebar from "../Common/Sidebar/Sidebar";
-import Login from "../pages/Login/Login";
 
 const CommonLayout = () => {
   const { Content } = Layout;

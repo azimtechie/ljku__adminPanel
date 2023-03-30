@@ -23,6 +23,7 @@ const Footer = () => {
               <a
                 href="https://ljku.edu.in/"
                 target={"_blank"}
+                rel="noopener noreferrer"
                 className="hover:underline"
               >
                 LJKU

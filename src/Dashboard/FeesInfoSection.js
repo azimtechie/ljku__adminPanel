@@ -1,20 +1,9 @@
 import React from "react";
-import {
-  Button,
-  Descriptions,
-  PageHeader,
-  Statistic,
-  Tabs,
-  Card,
-  Avatar,
-} from "antd";
-import { FaRupeeSign } from "react-icons/fa";
-import { UserOutlined } from "@ant-design/icons";
+import { Button, Descriptions, PageHeader, Tabs, Card } from "antd";
 import { MdArrowForward } from "react-icons/md";
 import { HiCurrencyRupee } from "react-icons/hi";
 import { BiRupee } from "react-icons/bi";
 
-const { TabPane } = Tabs;
 const renderContent = (column = 2, user) => (
   <Descriptions size="small" column={column}>
     <Descriptions.Item label="Branch">

@@ -1,5 +1,4 @@
 import React from "react";
-import Home from "./pages/Home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CommonLayout from "./layout/Layout";
 import { routes, defaultroutes } from "./Routes";
@@ -32,7 +31,6 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-      {/* <Home /> */}
     </>
   );
 };

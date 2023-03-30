@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 import { Layout, Menu } from "antd";
 
-const { Header, Content, Sider } = Layout;
+const { Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
     key,
