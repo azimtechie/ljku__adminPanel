@@ -9,7 +9,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<CommonLayout />}>
+          <Route element={<CommonLayout />}>
             {routes.map((item, key) => (
               <Route
                 exact

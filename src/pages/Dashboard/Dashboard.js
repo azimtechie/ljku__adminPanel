@@ -3,7 +3,7 @@ import AnnouncementsSection from "../../Dashboard/AnnouncementsSection";
 import FeesInfoSection from "../../Dashboard/FeesInfoSection";
 import PersonalInfoSection from "../../Dashboard/PersonalInfoSection";
 
-const Home = () => {
+const Dashboard = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <>
@@ -21,4 +21,4 @@ const Home = () => {
     </>
   );
 };
-export default Home;
+export default Dashboard;

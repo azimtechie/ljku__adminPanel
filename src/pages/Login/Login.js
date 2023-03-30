@@ -21,7 +21,7 @@ const Login = () => {
     console.log(userData);
     if (user) {
       message.success("Login Successful");
-      navigate("/home");
+      navigate("/dashboard");
       localStorage.setItem("user", JSON.stringify(user));
     } else {
       setErrorMessage("Invalid credentials");

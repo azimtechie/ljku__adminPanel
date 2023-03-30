@@ -6,6 +6,7 @@ import {
   AiTwotoneCalendar,
 } from "react-icons/ai";
 import { Layout, Menu } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const { Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -17,8 +18,8 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem("Dashbord", "/home", <AiOutlineHome />),
-  getItem("My Results", "2", <DesktopOutlined />),
+  getItem("Dashboard", "/dashboard", <AiOutlineHome />),
+  getItem("My Results", "results", <DesktopOutlined />),
   getItem("Profile", "sub1", <UserOutlined />, [
     getItem("Update Profile", "3"),
     getItem("Security", "4"),
@@ -31,6 +32,7 @@ const items = [
   getItem("Logout", "/", <AiOutlineLogout />),
 ];
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
@@ -41,8 +43,9 @@ const Sidebar = () => {
       <Menu
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={["4"]}
+        defaultSelectedKeys={["/dashboard"]}
         items={items}
+        onClick={({ key }) => navigate(key)}
       />
     </Sider>
   );
