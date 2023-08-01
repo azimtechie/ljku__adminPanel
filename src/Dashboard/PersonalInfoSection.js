@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, PageHeader } from "antd";
 import { AiFillCalendar } from "react-icons/ai";
 import {
@@ -13,17 +13,30 @@ import {
 import { MdEmail, MdArrowForward } from "react-icons/md";
 
 const PersonalInfoSection = (user) => {
-  console.log(user);
+  const [greeting, setGreeting] = useState("");
+  useEffect(() => {
+    const currentTime = new Date().getHours();
+
+    if (currentTime >= 5 && currentTime < 12) {
+      setGreeting(`Good Morning! 🌅`);
+    } else if (currentTime >= 12 && currentTime < 17) {
+      setGreeting(`Good Afternoon! 🌤️`);
+    } else if (currentTime >= 17 && currentTime < 20) {
+      setGreeting(`Good Evening! 🌇`);
+    } else {
+      setGreeting(`Good Night! 🌙`);
+    }
+  }, [user?.user?.lastname]);
   return (
     <>
       <Card
         title={
           <span className="text-lg font-semibold">
-            Hi {user?.user?.lastname}, Good Afternoon ! 🌤️
+            Hi {user?.user?.lastname}, {greeting}
           </span>
         }
         size="small"
-        className="custom__card personalInfoCard border-2 "
+        className="custom__card personalInfoCard border-2"
       >
         <PageHeader
           className="custom__fees__header  site-page-header-responsive"
